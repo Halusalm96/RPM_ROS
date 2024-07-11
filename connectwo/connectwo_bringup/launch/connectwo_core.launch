@@ -1,0 +1,15 @@
+<launch>
+  <arg name="multi_robot_name" default=""/>
+  <arg name="imu_frame_id" default="imu_link"/>
+
+  <node pkg="rosserial_python" type="serial_node.py" name="connectwo_core" output="screen">
+    <param name="port" value="/dev/Connectwo"/>
+    <!--<param name="port" value="/dev/ttyUSB0" />-->
+    <param name="baud" value="57600"/>
+    <param name="tf_prefix" value="$(arg multi_robot_name)"/>
+    <param name="frame_id" type="string" value="$(arg imu_frame_id)"/>
+    <remap from="odom" to="/raw_odom"/>
+  </node>
+
+</launch>
+

@@ -1,0 +1,24 @@
+<launch>
+  <arg name="set_frame_id" default="base_scan" />
+  <arg name="imu_frame_id" default="imu_link" />
+
+  <!-- Arguments -->
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+
+
+  <!-- Connectwo -->
+ <!--<include file="$(find connectwo_bringup)/launch/connectwo_remote.launch">
+    <arg name="model" value="$(arg model)" />
+  </include>-->
+
+
+  <include file="$(find connectwo_bringup)/launch/connectwo_core.launch">
+       <arg name="imu_frame_id" value="$(arg imu_frame_id)" />
+  </include>
+
+   <include file="$(find connectwo_bringup)/launch/connectwo_rplidar.launch">
+       <arg name="set_frame_id" value="$(arg set_frame_id)" />
+   </include>
+
+</launch>
+

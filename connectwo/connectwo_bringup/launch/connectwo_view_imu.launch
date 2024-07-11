@@ -1,0 +1,6 @@
+<launch>
+  <!--pi-->
+  <include file="$(find connectwo_bringup)/launch/connectwo_core.launch"/>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find connectwo_bringup)/rviz/imu.rviz" />
+</launch>

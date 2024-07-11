@@ -1,0 +1,12 @@
+<launch>
+  <param name="use_sim_time" value="false"/>
+
+  <!--<node pkg="connectwo_localization" type="read_imu_cal_odom.py" name="read_imu_cal_odom" output="screen">
+      <param name="publish_tf" value="false"/>
+  </node>-->
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization" output="screen">
+    <rosparam command="load" file="$(find connectwo_localization)/config/ekf_localization.yaml"/>
+    <!--<remap from="odometry/filtered" to="odom"/>-->
+  </node>
+</launch>

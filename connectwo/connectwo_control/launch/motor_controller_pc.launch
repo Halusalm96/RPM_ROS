@@ -1,0 +1,6 @@
+<launch>
+    <!-- Example of launching the motor controller node -->
+    <node pkg="connectwo_control" type="motor_controller_pc" name="motor_controller_pc" output="screen">
+  </node>
+
+</launch>

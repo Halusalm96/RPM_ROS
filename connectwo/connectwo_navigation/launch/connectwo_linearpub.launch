@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="connectwo_navigation" type="linear_pub.py" name="linear_pub" output="screen"/> 
+</launch>

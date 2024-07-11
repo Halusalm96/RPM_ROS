@@ -1,0 +1,16 @@
+<launch>
+
+    <!-- YAML 파일 로드 -->
+    <rosparam file="$(find connectwo_control)/config/connectwo_control.yaml" command="load"/>
+
+    <!-- Controller Manager -->
+    <node name="controller_manager" pkg="controller_manager" type="spawner" respawn="false"
+          args="joint_state_controller 
+                front_right_wheel_position_controller 
+                front_left_wheel_position_controller 
+                caster_right_wheel_position_controller 
+                caster_left_wheel_position_controller"/>
+
+    <!-- Connectwo Control Node -->
+    <node name="connectwo_control" pkg="connectwo_control" type="connectwo_control" output="screen"/>
+</launch>

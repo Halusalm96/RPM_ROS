@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="connectwo_navigation" type="cmdvel_pub.py" name="cmdvel_pub" output="screen"/>
+</launch>

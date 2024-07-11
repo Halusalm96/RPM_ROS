@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>connectwo</name>
+  <version>1.2.6</version>
+  <description>
+    ROS packages for the Connectwo (meta package)
+  </description>
+  <license>Apache 2.0</license>
+  <license>BSD</license>
+  <author email="justcej@gmail.com">cej</author>
+  <author>cej</author>
+  <maintainer email="justcej@gmail.com">cej</maintainer>
+  <!--<url type="website">http://wiki.ros.org/turtlebot3</url>
+  <url type="emanual">http://turtlebot3.robotis.com</url>
+  <url type="repository">https://github.com/ROBOTIS-GIT/turtlebot3</url>
+  <url type="bugtracker">https://github.com/ROBOTIS-GIT/turtlebot3/issues</url>-->
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>connectwo_bringup</exec_depend>
+  <exec_depend>connectwo_navigation</exec_depend>
+  <exec_depend>connectwo_control</exec_depend>
+  <export><metapackage/></export>
+</package>

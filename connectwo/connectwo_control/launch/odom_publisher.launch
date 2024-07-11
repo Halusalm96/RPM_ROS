@@ -1,0 +1,5 @@
+<launch>
+    <!-- Example of launching the odom publisher node -->
+    <node pkg="connectwo_control" type="odom_publisher" name="odom_publisher" output="screen">
+    </node>
+</launch>

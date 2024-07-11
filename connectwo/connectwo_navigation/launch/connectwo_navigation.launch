@@ -1,0 +1,46 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="open_rviz" default="true"/>
+  <arg name="map_file" default="$(find connectwo_navigation)/maps/map.yaml"/>
+  <arg name="move_forward_only" default="false"/>
+  <!-- <arg name="move_base_topic" default="/move_base" /> -->
+
+  <!-- Connectwo -->
+  <include file="$(find connectwo_bringup)/launch/connectwo_remote.launch">
+    <arg name="model" value="$(arg model)" />
+  </include> 
+
+
+  <!-- nodes and launch for navigation -->
+
+  <!-- Map server -->
+  <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
+
+  <!--read imu cal odom  -->
+  <!--<include file="$(find connectwo_localization)/launch/ekf_localization.launch" />-->
+
+  <!--<include file="$(find imu_ekf)/launch/imu_ekf_driver.launch"/>-->
+ 
+  <node pkg="connectwo_localization" type="read_imu_cal_odom.py" name="read_imu_cal_odom" output="screen">
+      <!--<param name="publish_tf" value="true"/>-->
+  </node>
+
+  <!-- tf_broadcaster(odom and map) -->
+  <!--<include file="$(find connectwo_broadcaster)/launch/tf_broadcaster.launch"/>-->
+
+  <!-- AMCL -->
+  <include file="$(find connectwo_navigation)/launch/amcl.launch"/>
+
+  <!-- move_base -->
+  <include file="$(find connectwo_navigation)/launch/move_base.launch">
+    <arg name="model" value="$(arg model)" />
+    <arg name="move_forward_only" value="$(arg move_forward_only)"/> 
+  </include>
+
+  <!-- rviz -->
+  <group if="$(arg open_rviz)"> 
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find connectwo_navigation)/rviz/connectwo_navigation.rviz"/>
+  </group>
+</launch>

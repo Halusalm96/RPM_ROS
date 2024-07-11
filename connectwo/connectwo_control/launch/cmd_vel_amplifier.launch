@@ -1,0 +1,5 @@
+<launch>
+    <!-- Example of launching the odom cmd_vel_amplifier node -->
+    <node pkg="connectwo_control" type="cmd_vel_amplifier" name="cmd_vel_amplifier" output="screen">
+    </node>
+</launch>

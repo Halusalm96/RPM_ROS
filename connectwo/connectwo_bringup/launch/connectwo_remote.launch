@@ -1,0 +1,20 @@
+<launch>
+  <!--pc-->
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="multi_robot_name" default=""/>
+
+  <include file="$(find turtlebot3_bringup)/launch/includes/description.launch.xml">
+    <arg name="model" value="$(arg model)" />
+  </include>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+    <param name="publish_frequency" type="double" value="50.0" /><!--50.0 > 144.0 > 30.0-->
+    <param name="tf_prefix" value="$(arg multi_robot_name)"/>
+    <!--<param name="cache_time" value="10.0" />-->
+    <param name="buffer_length" value="10.0"/>
+  </node>
+
+  <!-- Static Transform Publisher -->
+  <!--<node pkg="tf" type="static_transform_publisher" name="base_footprint_to_base_link" args="0 0 0.03 0 0 0 base_footprint base_link 100" />-->
+
+</launch>

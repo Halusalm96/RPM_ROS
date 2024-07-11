@@ -1,0 +1,24 @@
+connectwo:
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  front_right_wheel_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: wheel_right_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  front_left_wheel_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: wheel_left_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  caster_right_wheel_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: caster_back_right_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
+
+  caster_left_wheel_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: caster_back_left_joint
+    pid: {p: 100.0, i: 0.01, d: 10.0}
